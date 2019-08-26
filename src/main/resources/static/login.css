@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+*{
+	marigin: 0;
+	padding: 0;
+}
+
+
+.loginPage{
+	text-align: center;
+}
+
+.loginlogo{
+	color: #FF6600;
+}
+
+.loginForm{
+	marigin: 0 auto;
+}
+
+.userInsertButton{
+	margin-top: 20px;
+	background-color: #FF3300;
+	color: #ffffff;
+	padding: 20px;
+	font-size: 20px;
+}
