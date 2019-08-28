@@ -1,5 +1,7 @@
 package com.example.demo.repository;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -23,6 +25,24 @@ public class UserRepository {
 		user.setPassword(rs.getString("password"));
 		return user;
 	};
+	
+	/**
+	 * ユーザー情報を１件取得する.
+	 * 
+	 * @param mailAddress
+	 * @param password
+	 * @return　１件のユーザー情報を返します
+	 */
+	public List<User> userLogin(String mailAddress, String password) {
+		String sql = "SELECT id,name,mail_address,password FROM users WHERE mail_address = :mailAddress AND password = :password";
+		
+		SqlParameterSource param = new MapSqlParameterSource().addValue("mailAddress", mailAddress).addValue("password", password);
+		
+		List<User> userList = template.query(sql, param, USER_ROW_MAPPER);
+		
+		return userList;
+		
+	}
 	
 	/**
 	 * ユーザー情報を登録します.
